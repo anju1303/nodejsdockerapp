@@ -1,0 +1,11 @@
+node {
+    checkout scm
+
+    docker.withRegistry('https://registry.hub.docker.com/', 'DockerID') {
+
+        def customImage = docker.build("anjuraju/nodejs-docker")
+
+        /* Push the container to the custom Registry */
+        customImage.push()
+    }
+}
